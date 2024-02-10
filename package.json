@@ -2,13 +2,14 @@
   "name": "crud-api",
   "version": "1.0.0",
   "description": "",
-  "main": "server.ts",
+  "main": "src/server.ts",
   "engines": {
     "node": ">=20.0.0"
   },
   "scripts": {
-    "dev": "nodemon",
-    "prod": "npm run build && node ./build/bundle.js",
+    "start:dev": "nodemon",
+    "start:multi": "nodemon -- --isMulti=true",
+    "start:prod": "npm run build && node ./build/bundle.js",
     "build": "webpack --config ./webpack.config.ts --env mode=production",
     "format": "prettier \"./**/*.{ts,css}\"",
     "format:fix": "prettier --write \"./**/*.{ts,css}\"",
