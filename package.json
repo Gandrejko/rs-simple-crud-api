@@ -1,0 +1,38 @@
+{
+  "name": "crud-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.ts",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "dev": "nodemon",
+    "prod": "npm run build && node ./build/bundle.js",
+    "build": "webpack --config ./webpack.config.ts --env mode=production",
+    "format": "prettier \"./**/*.{ts,css}\"",
+    "format:fix": "prettier --write \"./**/*.{ts,css}\"",
+    "type-check": "tsc --noEmit"
+  },
+  "author": "Bohdan Shcherbyna",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/dotenv-webpack": "^7.0.7",
+    "@types/node": "^20.11.10",
+    "@types/uuid": "^9.0.8",
+    "@types/webpack": "^5.28.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.4.1",
+    "dotenv-webpack": "^8.0.1",
+    "nodemon": "^3.0.3",
+    "prettier": "^3.2.4",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.3.3",
+    "webpack": "^5.90.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "ts-loader": "^9.5.1",
+    "uuid": "^9.0.1"
+  }
+}
