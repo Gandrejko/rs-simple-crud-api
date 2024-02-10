@@ -8,6 +8,7 @@
   },
   "scripts": {
     "start:dev": "nodemon",
+    "start:multi": "nodemon -- --isMulti=true",
     "start:prod": "npm run build && node ./build/bundle.js",
     "build": "webpack --config ./webpack.config.ts --env mode=production",
     "format": "prettier \"./**/*.{ts,css}\"",

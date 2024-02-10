@@ -12,7 +12,7 @@ export const userRoutes = {
     try {
       const users = userService.allUsers();
       res.writeHead(200, DEFAULT_HEADER);
-      res.write(JSON.stringify({ results: users }));
+      res.write(JSON.stringify(users));
       res.end();
     } catch (err: any) {
       if (err.message === '404') {
