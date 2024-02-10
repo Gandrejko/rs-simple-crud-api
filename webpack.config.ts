@@ -14,7 +14,7 @@ export default (env: Environment) => {
     mode: env.mode,
     devtool: false,
     target: 'node',
-    entry: resolve(__dirname, 'server.ts'),
+    entry: resolve(__dirname, 'src/server.ts'),
     output: {
       filename: 'bundle.js',
       path: resolve(__dirname, 'build'),
