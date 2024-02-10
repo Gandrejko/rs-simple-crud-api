@@ -1,4 +1,5 @@
-import { CreateUserDTO } from 'types/types';
+import { CreateUserDTO } from '../types/types';
+import { validateUUID } from '../utils/validateUUID';
 import { validateUser } from '../validation/userValidation';
 import UserRepository from '../repositories/userRepository';
 
@@ -13,6 +14,7 @@ export default class UserService {
   }
 
   getById(id: unknown) {
+    if (!validateUUID(id)) throw new Error('400');
     if (!this.userRepository.getUserById(String(id))) throw new Error('404');
 
     return this.userRepository.getUserById(String(id));
@@ -24,12 +26,14 @@ export default class UserService {
   }
 
   updateUser(id: unknown, data: { [key: string]: string | number | string[] }) {
+    if (!validateUUID(id)) throw new Error('400');
     if (!validateUser(data)) throw new Error('400');
     if (!this.userRepository.getUserById(String(id))) throw new Error('404');
     return this.userRepository.updateUser(String(id), data as CreateUserDTO);
   }
 
   deleteUser(id: unknown) {
+    if (!validateUUID(id)) throw new Error('400');
     if (!this.userRepository.getUserById(String(id))) throw new Error('404');
     return this.userRepository.deleteUser(String(id));
   }

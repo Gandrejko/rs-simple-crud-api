@@ -14,8 +14,8 @@ export const userRoutes = {
       res.writeHead(200, DEFAULT_HEADER);
       res.write(JSON.stringify({ results: users }));
       res.end();
-    } catch (err) {
-      if (err === '404') {
+    } catch (err: any) {
+      if (err.message === '404') {
         res.writeHead(404, DEFAULT_HEADER);
         res.write('Not found');
         res.end();
@@ -31,8 +31,8 @@ export const userRoutes = {
       res.write('User has been added\n');
       res.write(JSON.stringify(user));
       res.end();
-    } catch (err) {
-      if (err === '400') {
+    } catch (err: any) {
+      if (err.message === '400') {
         res.writeHead(400, DEFAULT_HEADER);
         res.write('The data is wrong (username, age or hobbies)');
         res.end();
@@ -48,13 +48,13 @@ export const userRoutes = {
       res.writeHead(200, DEFAULT_HEADER);
       res.write(JSON.stringify(user));
       res.end();
-    } catch (err) {
-      if (err === '404') {
+    } catch (err: any) {
+      if (err.message === '404') {
         res.writeHead(404, DEFAULT_HEADER);
         res.write('Not found');
         res.end();
       }
-      if (err === '400') {
+      if (err.message === '400') {
         res.writeHead(400, DEFAULT_HEADER);
         res.write('User ID is invalid');
         res.end();
@@ -70,13 +70,13 @@ export const userRoutes = {
       res.writeHead(200, DEFAULT_HEADER);
       res.write('User has been deleted');
       res.end();
-    } catch (err) {
-      if (err === '404') {
+    } catch (err: any) {
+      if (err.message === '404') {
         res.writeHead(404, DEFAULT_HEADER);
         res.write('Not found');
         res.end();
       }
-      if (err === '400') {
+      if (err.message === '400') {
         res.writeHead(400, DEFAULT_HEADER);
         res.write('User ID is invalid');
         res.end();
@@ -94,13 +94,13 @@ export const userRoutes = {
       res.writeHead(200, DEFAULT_HEADER);
       res.write('User has been updated');
       res.end();
-    } catch (err) {
-      if (err === '404') {
+    } catch (err: any) {
+      if (err.message === '404') {
         res.writeHead(404, DEFAULT_HEADER);
         res.write('Not found');
         res.end();
       }
-      if (err === '400') {
+      if (err.message === '400') {
         res.writeHead(400, DEFAULT_HEADER);
         res.write('User ID is invalid');
         res.end();

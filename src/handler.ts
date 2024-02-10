@@ -1,3 +1,4 @@
+import { DEFAULT_HEADER } from './constants/constants';
 import { IncomingMessage, ServerResponse } from 'http';
 import { userRoutes } from './routes/usersRoute';
 import { parse } from 'url';
@@ -15,7 +16,7 @@ type allRoutesTypes = {
 const allRoutes: allRoutesTypes = {
   ...userRoutes,
   default: ({ res }: handlerProps) => {
-    res.writeHead(404, { 'Content-Type': 'application/json' });
+    res.writeHead(404, DEFAULT_HEADER);
     res.write('Unknown request. Please try another one');
     res.end();
   },
@@ -25,7 +26,7 @@ export const handler = (req: IncomingMessage, res: ServerResponse) => {
   const { url, method } = req;
   const { pathname } = parse(url || '', true);
   const uuid = pathname?.replace('/api/users', '');
-  const key = `${uuid ? '/api/users/{uuid}' : pathname}:${method?.toLowerCase()}`;
+  const key = `${uuid ? pathname + '/{uuid}' : pathname}:${method?.toLowerCase()}`;
   const chosen = allRoutes[key] || allRoutes.default;
   return Promise.resolve(chosen({ req, res })).catch(handlerError(res));
 };
